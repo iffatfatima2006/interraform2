@@ -1,0 +1,130 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "PP Mori",
+      "role": "heading"
+    },
+    {
+      "family": "Inter",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#60A5FA",
+    "secondary": "#0EA5E9",
+    "accent": "#60A5FA",
+    "background": "#F9F9F9",
+    "textPrimary": "#000000",
+    "link": "#F0F9FF"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Inter",
+      "heading": "PP Mori"
+    },
+    "fontStacks": {
+      "heading": [
+        "Inter",
+        "sans-serif"
+      ],
+      "body": [
+        "Inter",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "PP Mori"
+      ]
+    },
+    "fontSizes": {
+      "h1": "32px",
+      "h2": "24px",
+      "body": "15px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "8px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#000000",
+      "textColor": "#FFFFFF",
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "transparent",
+      "textColor": "#FFFFFF",
+      "borderColor": "#FFFFFF",
+      "borderRadius": "1000px",
+      "borderRadiusCorners": {
+        "topLeft": "1000px",
+        "topRight": "1000px",
+        "bottomRight": "1000px",
+        "bottomLeft": "1000px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "File saved at: attached_assets/logo.svg",
+    "favicon": "File saved at: attached_assets/favicon.ico",
+    "ogImage": null
+  },
+  "__llm_logo_reasoning": {
+    "selectedIndex": 1,
+    "reasoning": "Selected #0 because it is the most prominent logo, matching the brand inferred from the URL and page title, and is visible with a suitable size.",
+    "confidence": 0.85,
+    "source": "llm"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 0,
+      "text": "Make a Connection",
+      "reasoning": "Button #0 'Make a Connection' is likely the primary CTA due to its action-oriented text and prominent placement. It stands out as a key action for user engagement."
+    },
+    "secondary": {
+      "index": 3,
+      "text": "Make a Connection",
+      "reasoning": "Button #3 'Make a Connection' with a transparent background and border is a suitable secondary CTA, offering a less prominent but related action."
+    },
+    "confidence": 0.9
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "businesses and organizations needing aquatic services"
+  },
+  "designSystem": {
+    "framework": "custom",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.9,
+    "colors": 0.9,
+    "overall": 0.9
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": 0,
+        "selectedLogoReasoning": "Selected #0 because it is the most prominent logo, matching the brand inferred from the URL and page title, and is visible with a suitable size.",
+        "confidence": 0.85
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": true
+    }
+  }
+}
