@@ -28,61 +28,73 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-black/40" />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-between px-8 md:px-12 py-28 md:py-32">
-        {/* Main hero text - bottom left */}
-        <div className="flex flex-col justify-end flex-1">
-          <div className="max-w-xl">
-            <h1 className="font-heading text-4xl md:text-6xl text-white leading-tight mb-4">
-              Luxury in <em className="not-italic italic">Motion.</em>
-              <br />
-              Where Water <em className="not-italic italic">Inspires.</em>
-            </h1>
-            <p className="text-white/70 text-xs tracking-[0.15em] uppercase mt-4">
-              EST. 1989
-            </p>
-          </div>
-        </div>
-
-        {/* Bottom row */}
-        <div className="flex items-end justify-between mt-8">
-          {/* Left dot indicator */}
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-white block" />
-          </div>
-
-          {/* Center services list */}
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-24 md:bottom-28 text-center">
-            <div className="flex flex-col items-center gap-0.5">
-              {services.map((s) => (
-                <p key={s.left} className="text-white/90 text-[11px] tracking-wide">
-                  {s.left}
-                </p>
-              ))}
+      <div className="relative z-10 h-full flex flex-col justify-end px-8 md:px-12 pb-2 md:pb-4">
+        <div className="max-w-[1440px] mx-auto w-full">
+          {/* 1. Content Row: Headline/Subtext (Left) and Service Lists (Right) */}
+          <div className="flex flex-col md:flex-row items-end justify-between gap-12 mb-10">
+            {/* Left side: Heading and Subtext */}
+            <div className="max-w-2xl">
+              <h1 className="text-4xl md:text-7xl text-white leading-[1.1] mb-8 font-heading">
+                <span className="font-body font-medium tracking-tight not-italic">Productivity Relies on</span>
+                <br />
+                <span className="italic">Environment.</span>
+              </h1>
+              <p className="text-white/80 text-sm md:text-lg leading-relaxed max-w-2xl font-light">
+                Interraform designs and builds modern workspaces, offices, and commercial 
+                interiors that improve productivity, efficiency, and business environment through 
+                strategic design and complete project execution.
+              </p>
             </div>
 
-            {/* Make a Connection button */}
-            <Link
-              href="/contact"
-              className="mt-8 inline-flex items-center gap-2 border border-white/70 rounded-full text-white text-xs tracking-wider px-5 py-2.5 hover:bg-white hover:text-black transition-colors duration-300"
-            >
-              Make a Connection
-              <ArrowRight size={14} />
-            </Link>
+            {/* Right side: The Two Service Lists */}
+            <div className="hidden md:flex items-start gap-12 text-right">
+              <div className="flex flex-col items-end gap-1.5">
+                {services.map((s) => (
+                  <p key={s.left} className="text-white/90 text-[11px] tracking-widest uppercase font-light leading-snug">
+                    {s.left}
+                  </p>
+                ))}
+              </div>
+              <div className="flex flex-col items-end gap-1.5">
+                {services.map((s) => (
+                  <p key={s.right} className="text-white/40 text-[11px] tracking-widest uppercase font-light leading-snug">
+                    {s.right}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* 3. Buttons & Scroll Row (Now Above the line) */}
+          <div className="flex flex-col items-center gap-12 mb-8 text-center">
+            <div className="flex flex-wrap items-center justify-center gap-6">
+              <Link
+                href="/contact"
+                className="inline-flex items-center border border-white/70 rounded-full text-white text-[10px] tracking-[0.2em] uppercase px-8 py-3.5 hover:bg-white hover:text-black transition-all duration-300"
+              >
+                Book Free Consultation
+              </Link>
+              <Link
+                href="/projects"
+                className="inline-flex items-center border border-white/30 rounded-full text-white/70 text-[10px] tracking-[0.2em] uppercase px-8 py-3.5 hover:border-white hover:text-white transition-all duration-300"
+              >
+                View Our Projects
+              </Link>
+            </div>
 
             {/* Scroll indicator */}
-            <div className="mt-8 flex flex-col items-center gap-1 text-white/60">
+            <div className="flex flex-col items-center gap-1 text-white/60">
               <span className="text-[9px] tracking-[0.25em] uppercase">Scroll</span>
-              <ChevronDown size={16} className="animate-bounce" />
+              <ChevronDown size={14} className="animate-bounce" />
             </div>
           </div>
 
-          {/* Right keywords */}
-          <div className="hidden md:flex flex-col items-end gap-0.5">
-            {services.map((s) => (
-              <p key={s.right} className="text-white/50 text-[10px] tracking-widest uppercase">
-                {s.right}
-              </p>
-            ))}
+          {/* 4. Horizontal Line (Positioned just above the dot) */}
+          <div className="w-full h-[1.5px] bg-white/50 mb-6" />
+
+          {/* 5. Bottom White Dot (Indicator) */}
+          <div className="flex items-center">
+            <span className="w-1.5 h-1.5 rounded-full bg-white block" />
           </div>
         </div>
       </div>

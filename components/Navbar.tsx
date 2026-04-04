@@ -12,13 +12,9 @@ export default function Navbar() {
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-5 md:px-10">
         {/* Logo */}
         <Link href="/" className="z-10">
-          <Image
-            src="/logo.svg"
-            alt="Service Plus Aquatics"
-            width={80}
-            height={48}
-            className="h-10 w-auto invert"
-          />
+          <span className="text-white text-lg font-medium tracking-tight">
+            interra<span className="font-bold">Form</span>
+          </span>
         </Link>
 
         {/* Center MENU toggle */}
