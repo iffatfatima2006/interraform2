@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { usePathname } from 'next/navigation'
 
@@ -8,26 +8,33 @@ export default function PageLoader() {
   const [exiting, setExiting] = useState(false)
   const [hidden, setHidden] = useState(false)
 
+  const isFirstLoad = useRef(true)
+
   useEffect(() => {
-    // Reset state for new page
-    setExiting(false)
-    setHidden(false)
-
     const pc = document.getElementById('page-content')
-    if (pc) pc.style.opacity = '0'
 
-    // Reveal page content after short delay
-    setTimeout(() => {
-      if (pc) pc.style.opacity = '1'
-    }, 100)
+    // Check if this is a hard reload/direct visit (no flag yet in session)
+    const isHardLoad = !sessionStorage.getItem('siteLoaded')
 
-    // Play loader for 1.2 seconds on every page change
-    const exitTimer = setTimeout(() => setExiting(true), 1200)
-    const hideTimer = setTimeout(() => {
+    if (isFirstLoad.current && isHardLoad) {
+      // First hard load — show the full loader
+      isFirstLoad.current = false
+      sessionStorage.setItem('siteLoaded', '1')
+
+      setExiting(false)
+      setHidden(false)
+
+      if (pc) pc.style.opacity = '0'
+      setTimeout(() => { if (pc) pc.style.opacity = '1' }, 100)
+
+      const exitTimer = setTimeout(() => setExiting(true), 1200)
+      const hideTimer = setTimeout(() => setHidden(true), 2000)
+      return () => { clearTimeout(exitTimer); clearTimeout(hideTimer) }
+    } else {
+      // Client-side navigation — skip loader entirely, just show content immediately
       setHidden(true)
-    }, 2000)
-
-    return () => { clearTimeout(exitTimer); clearTimeout(hideTimer) }
+      if (pc) pc.style.opacity = '1'
+    }
   }, [pathname])
 
   if (hidden) return null
