@@ -1,27 +1,26 @@
 import Navbar from '@/components/Navbar'
 import HeroSection from '@/components/HeroSection'
-import QuoteSection from '@/components/QuoteSection'
+import Branding from '@/components/Branding'
 import DesignSection from '@/components/DesignSection'
 import ServicesSection from '@/components/ServicesSection'
 import ManufacturingSection from '@/components/ManufacturingSection'
-import InstallationSection from '@/components/InstallationSection'
-import BrandsSection from '@/components/BrandsSection'
-import OperationsSection from '@/components/OperationsSection'
+import ProcessSection from '@/components/ProcessSection'
 import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="bg-[#0a0a0a]">
+    <main className="bg-[#0a0a0a] relative">
       <Navbar />
       <HeroSection />
-      <QuoteSection />
-      <DesignSection />
-      <ServicesSection />
-      <ManufacturingSection />
-      <InstallationSection />
-      <BrandsSection />
-      <OperationsSection />
-      <Footer />
+
+      {/* Give sections below hero a higher z-index so they slide over the sticky hero */}
+      <div className="relative z-10 bg-[#0a0a0a]">
+        <Branding />
+        <DesignSection />
+        <ManufacturingSection />
+        <ProcessSection />
+        <Footer />
+      </div>
     </main>
   )
 }

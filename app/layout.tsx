@@ -1,16 +1,17 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import PageLoader from '@/components/PageLoader'
+import SmoothScroller from '@/components/SmoothScroller'
 
 export const metadata: Metadata = {
-  title: 'Service Plus Aquatics | Luxury Aquatic Design & Construction',
+  title: 'InterraForm | Workspace Design & Construction',
   description:
-    "Canada's premier aquatic experts, reshaping luxury one custom-built project at a time. Where passion meets precision, and every ripple begins with a vision.",
+    'Interraform designs and builds modern workspaces, offices, and commercial interiors that improve productivity, efficiency, and business environment through strategic design and complete project execution.',
   openGraph: {
-    title: 'Service Plus Aquatics | Luxury Aquatic Design & Construction',
+    title: 'InterraForm | Workspace Design & Construction',
     description:
-      "Canada's premier aquatic experts, reshaping luxury one custom-built project at a time.",
-    url: 'https://www.serviceplusaquatics.com',
-    siteName: 'Service Plus Aquatics',
+      'Interraform designs and builds modern workspaces, offices, and commercial interiors.',
+    siteName: 'InterraForm',
     type: 'website',
   },
 }
@@ -22,7 +23,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SmoothScroller>
+          <PageLoader />
+          <div id="page-content">
+            {children}
+          </div>
+        </SmoothScroller>
+      </body>
     </html>
   )
 }

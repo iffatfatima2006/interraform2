@@ -39,7 +39,7 @@ export default function InstallationSection() {
         {/* Right — Image */}
         <div className="relative min-h-[50vh] lg:min-h-full overflow-hidden order-1 lg:order-2">
           <Image
-            src="https://www.serviceplusaquatics.com/images/Install/install2.webp"
+            src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1600"
             alt="Luxury pool installation"
             fill
             className="object-cover"
@@ -53,7 +53,7 @@ export default function InstallationSection() {
         {/* Left — Image */}
         <div className="relative min-h-[50vh] overflow-hidden">
           <Image
-            src="https://www.serviceplusaquatics.com/images/Install/install1.webp"
+            src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&q=80&w=1000"
             alt="Interior pool design"
             fill
             className="object-cover"

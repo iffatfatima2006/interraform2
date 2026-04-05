@@ -5,25 +5,25 @@ const services = [
     title: 'Preventive Maintenance',
     description:
       'Tailored annual or seasonal preventive care programs ensuring peak operation, longevity, and uninterrupted enjoyment of your aquatic investment.',
-    image: 'https://www.serviceplusaquatics.com/images/Services/maint.webp',
+    image: 'https://images.unsplash.com/photo-1497215399587-8dbfc2a54366?auto=format&fit=crop&q=80&w=800',
   },
   {
     title: 'Water Quality Management',
     description:
       'Advanced monitoring, testing, and balancing create immaculate water quality for unparalleled clarity, safety, resulting in a pristine aquatic experience.',
-    image: 'https://www.serviceplusaquatics.com/images/Services/water.webp',
+    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800',
   },
   {
     title: 'Mechanical System Servicing',
     description:
       'Luxury-level mechanical care—where pumps, filters, and automation operate in perfect harmony for uninterrupted aquatic experiences.',
-    image: 'https://www.serviceplusaquatics.com/images/Services/oper.webp',
+    image: 'https://images.unsplash.com/photo-1416331108676-a22ccb276e35?auto=format&fit=crop&q=80&w=800',
   },
   {
     title: 'Training & Documentation',
     description:
       'Specialized training and precision-crafted manuals empower your team to operate and maintain aquatic systems with absolute confidence.',
-    image: 'https://www.serviceplusaquatics.com/images/Services/training.webp',
+    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800',
   },
 ]
 
@@ -35,7 +35,7 @@ export default function OperationsSection() {
         <div className="grid grid-cols-2 h-[50vh]">
           <div className="relative overflow-hidden">
             <Image
-              src="https://www.serviceplusaquatics.com/images/Services/opp2.webp"
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1400"
               alt="Pool operations"
               fill
               className="object-cover"
@@ -45,7 +45,7 @@ export default function OperationsSection() {
           </div>
           <div className="relative overflow-hidden">
             <Image
-              src="https://www.serviceplusaquatics.com/images/Services/opp1.webp"
+              src="https://images.unsplash.com/photo-1517502884422-41ea847cbce8?auto=format&fit=crop&q=80&w=1200"
               alt="Pool detail"
               fill
               className="object-cover"

@@ -1,3 +1,5 @@
+'use client'
+import { useState, useEffect } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Image from 'next/image'
@@ -21,255 +23,167 @@ const awardImages = [
 ]
 
 export default function AboutPage() {
+  const [animated, setAnimated] = useState(false)
+
+  useEffect(() => {
+    const delay = 1200
+    const timer = setTimeout(() => setAnimated(true), delay)
+    
+    // Intersection Observer for scroll-triggered animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+        }
+      })
+    }, observerOptions)
+
+    const animatedElements = document.querySelectorAll('.reveal-clip-vertical, .slide-up')
+    animatedElements.forEach(el => observer.observe(el))
+
+    return () => {
+      clearTimeout(timer)
+      observer.disconnect()
+    }
+  }, [])
+
   return (
-    <main className="bg-[#0a0a0a] min-h-screen">
-      <Navbar />
+    <main className={`bg-[#f5f2ed] min-h-screen ${animated ? 'hero-animated' : ''}`}>
+      <Navbar theme="light" />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-20 px-8 md:px-16 border-b border-white/10">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-white/40 text-[10px] tracking-[0.3em] uppercase mb-4">
+      <section className="relative pt-32 pb-20 px-8 md:px-16 border-b border-black/5 overflow-hidden">
+        <div className="max-w-7xl mx-auto relative">
+          {/* Top-Right Subtext */}
+          <div className="md:absolute top-0 right-0 max-w-xs md:text-right mb-12 md:mb-0">
+             <p className="text-black/60 text-xs md:text-sm font-light leading-relaxed slide-up">
+               Environment influences focus, movement, collaboration, and productivity
+             </p>
+          </div>
+
+          <p className="text-black/40 text-[10px] tracking-[0.4em] uppercase mb-4">
             Est. 1989
           </p>
-          <h1 className="font-heading text-8xl md:text-[12rem] text-white font-semibold leading-none tracking-tighter">
-            SPA
+          <h1 className="font-heading text-6xl md:text-[14rem] text-[#1a1a1a] font-semibold leading-none tracking-tighter">
+            <span className="reveal-clip block">
+              <span className="reveal-inner block line-1">INTERRA</span>
+            </span>
+            <span className="reveal-clip block">
+              <span className="reveal-inner block line-2">FORM</span>
+            </span>
           </h1>
-          <p className="font-heading text-white/50 text-xl italic mt-4">
-            Designing, Building, &amp; Operating<br />
-            Aquatic Destinations since 1989.
-          </p>
         </div>
       </section>
 
-      {/* Intro — founder section */}
+      {/* Intro — Side Info Section */}
       <section className="py-24 px-8 md:px-16">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Left — text */}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+          {/* Left — Mission Statement text */}
           <div>
-            <h2 className="font-heading text-3xl md:text-4xl text-white leading-tight mb-8">
-              Canada&apos;s leading aquatic service provider, delivering innovation and luxury
-              craftsmanship for over 35 years.
+            <h2 className="font-heading text-3xl md:text-4xl text-[#1a1a1a] leading-tight mb-12">
+              About Interraform
             </h2>
-            <div className="space-y-5 text-white/60 text-sm leading-relaxed">
+            <div className="space-y-8 text-[#1a1a1a]/70 text-base md:text-lg font-light leading-relaxed">
               <p>
-                Born from craftsmanship, built on prestige — SPA Inc. delivers full-service
-                custom aquatic environments for those who demand elegance, precision, and
-                performance.
+                Interraform is a workspace design and interior transformation company focused on 
+                building modern, functional, and high-performance environments.
               </p>
               <p>
-                Roland Guy, a Wilfrid Laurier University post-graduate and licensed tradesman,
-                founded SPA Inc. at the young age of 18.
+                We believe that productivity, efficiency, and business performance are strongly 
+                influenced by the environment people work in.
               </p>
               <p>
-                Today, from a 25,000 sq. ft. facility, his team delivers award-winning,
-                full-service aquatic solutions — engineered, manufactured, installed, and
-                serviced in-house.
+                That is why we focus on designing and building spaces that are not just 
+                aesthetically modern, but also strategically planned and efficiently executed.
               </p>
-              <p className="text-white/80 font-medium">
-                Nationally trusted. Technically elite. Built with precision, passion, and purpose.
+              <p className="text-[#1a1a1a] font-medium">
+                From office interiors to complete workspace remodeling, our goal is to create 
+                environments where people work better, businesses operate smoother, and clients 
+                feel impressed the moment they walk in.
               </p>
             </div>
           </div>
 
-          {/* Right — headshot */}
-          <div className="relative aspect-[3/4] overflow-hidden">
+          {/* Right — Visual (High-end office/team context) */}
+          <div className="relative aspect-[3/4] overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 rounded-sm">
             <Image
-              src="https://www.serviceplusaquatics.com/images/About/headshot.webp"
-              alt="Roland Guy, Founder"
-              fill
-              className="object-cover object-top"
-              unoptimized
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-            <div className="absolute bottom-6 left-6">
-              <p className="text-white text-sm font-medium">Roland Guy</p>
-              <p className="text-white/50 text-xs">Founder &amp; President</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Bold statement */}
-      <section className="py-20 px-8 md:px-16 border-y border-white/10">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="font-heading text-4xl md:text-6xl text-white font-semibold leading-tight max-w-4xl">
-            WE ARE CREATORS OF EXCEPTIONAL AQUATIC ENVIRONMENTS, WHERE{' '}
-            <em className="italic text-white/60">PRECISION</em> MEETS{' '}
-            <em className="italic text-white/60">ARTISTRY.</em>
-          </h2>
-        </div>
-      </section>
-
-      {/* Location + team section */}
-      <section className="py-24 px-8 md:px-16">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Left — girl by pool image */}
-          <div className="relative aspect-[4/3] overflow-hidden">
-            <Image
-              src="https://www.serviceplusaquatics.com/images/About/girl.webp"
-              alt="Luxury aquatic environment"
+              src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1200"
+              alt="High-performance Workspace"
               fill
               className="object-cover"
               unoptimized
             />
-          </div>
-
-          {/* Right — text */}
-          <div className="flex flex-col justify-center">
-            <div className="flex items-center gap-3 mb-8">
-              <MapPin size={16} className="text-white/40" />
-              <div>
-                <p className="text-white text-sm">Burlington, Ontario-based.</p>
-                <p className="text-white/50 text-xs mt-0.5">
-                  Providing expert services throughout Canada.
-                </p>
-              </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+            <div className="absolute bottom-10 left-10">
+              <p className="text-white text-lg font-light uppercase tracking-widest">Strategic Transformation</p>
             </div>
-
-            <p className="text-white/60 text-sm leading-relaxed mb-6">
-              Our full-time team of elite professionals deliver full-service aquatic excellence,
-              blending artistry and precision.
-            </p>
-            <p className="text-white/60 text-sm leading-relaxed mb-6">
-              Vertically integrated with licensed engineers, industry leading collaborators, and
-              advanced manufacturing in a 25,000 sq. ft. facility, we craft flawless mechanical,
-              controls, waterproofing, and finishing installations.
-            </p>
-            <p className="text-white/60 text-sm leading-relaxed">
-              Our year-round repairs and operations ensure seamless performance. Supported by
-              strong purchasing power and ample inventory, our distribution network offers
-              unrivaled reliability and sophistication — ensuring every project and aquatic
-              facility remains a masterpiece of luxury and innovation.
-            </p>
           </div>
         </div>
       </section>
 
-      {/* Map */}
-      <section className="px-8 md:px-16 pb-24">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative w-full aspect-[16/5] overflow-hidden">
-            <Image
-              src="https://www.serviceplusaquatics.com/images/About/map.webp"
-              alt="Service area map"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-            <div className="absolute inset-0 bg-black/30" />
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="py-20 px-8 md:px-16 bg-[#0f0f0f] border-y border-white/10">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-white/40 text-[10px] tracking-[0.3em] uppercase text-center mb-16">
-            Projects Completed — From vision to completion, SPA Inc. delivers turnkey aquatic
-            custom solutions with precision, scale, and the power of 150+ dedicated on-staff experts.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center border border-white/10 p-8">
-                <p className="font-heading text-5xl md:text-6xl text-white font-semibold mb-3">
-                  {stat.number}
-                </p>
-                <p className="text-white/40 text-xs tracking-widest uppercase">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Awards section */}
-      <section className="py-24 px-8 md:px-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-end justify-between mb-12">
-            <h2 className="font-heading text-4xl md:text-5xl text-white font-semibold">
-              Winners of<br />
-              <em className="italic text-white/60">100+ Awards</em>
+      {/* Strategic Impact Section — 3 Column */}
+      <section className="py-32 px-8 md:px-16 overflow-hidden">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+          
+          {/* Left Column (4 cols) */}
+          <div className="md:col-span-4 slide-up">
+            <h2 className="font-heading text-4xl md:text-5xl text-[#1a1a1a] font-medium leading-[1.1] mb-8">
+              Better environment leads to better work and better business.
             </h2>
+            <div className="flex items-center gap-4 text-black/30">
+              <div className="w-10 h-px bg-current" />
+              <p className="text-[10px] tracking-[0.4em] uppercase font-light">Performance First</p>
+            </div>
           </div>
 
-          {/* Award image grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {awardImages.map((img) => (
-              <div key={img.alt} className="relative aspect-[4/3] overflow-hidden group">
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  unoptimized
-                />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
-              </div>
-            ))}
+          {/* Center Column — The Rectangle Animation (4 cols) */}
+          <div className="md:col-span-4 flex justify-center">
+             <div className="relative w-full aspect-[3/4] overflow-hidden rounded-sm group reveal-clip-vertical">
+                {/* Scroll-triggered reveal inner */}
+                <div className="reveal-inner-vertical absolute inset-0">
+                  <Image
+                    src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=1200"
+                    alt="Strategic Workspace Design"
+                    fill
+                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                    unoptimized
+                  />
+                  <div className="absolute inset-0 bg-black/5" />
+                </div>
+             </div>
           </div>
+
+          {/* Right Column (4 cols) — Generated thematic text */}
+          <div className="md:col-span-4 slide-up">
+            <div className="space-y-8 text-[#1a1a1a]/70 text-base md:text-lg font-light leading-relaxed">
+              <p>
+                We believe that every square foot of your office should be a strategic asset. By meticulously optimizing for ergonomics, natural lighting, and intelligent spatial flow, we eliminate the friction that stifles team creativity.
+              </p>
+              <p>
+                Our precision-led approach to design-build transformations ensures that your environment doesn&apos;t just house your team—it actively empowers their best work. When your physical space reflects your level of excellence, your business results follow.
+              </p>
+              <p className="text-[#1a1a1a] font-medium flex items-center gap-4">
+                <ArrowRight size={18} className="text-black/30" />
+                <span>Engineered for Focus</span>
+              </p>
+            </div>
+          </div>
+
         </div>
       </section>
 
-      {/* HQ / Office section */}
-      <section className="pb-0">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[60vh]">
-          {/* Left — office image */}
-          <div className="relative min-h-[50vh] overflow-hidden">
-            <Image
-              src="https://www.serviceplusaquatics.com/images/About/office.webp"
-              alt="SPA Headquarters"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-            <div className="absolute inset-0 bg-black/30" />
-            <div className="absolute top-6 left-6">
-              <p className="text-white/50 text-[10px] tracking-[0.25em] uppercase">SPA HQ</p>
-            </div>
-          </div>
-
-          {/* Right — text */}
-          <div className="flex flex-col justify-center px-10 md:px-16 py-20 bg-[#0f0f0f]">
-            <p className="text-white/40 text-[10px] tracking-[0.3em] uppercase mb-6">
-              Where The Magic Happens
-            </p>
-            <h2 className="font-heading text-4xl md:text-5xl text-white font-semibold leading-tight mb-8">
-              WHERE THE<br />
-              <em className="italic text-white/60">MAGIC HAPPENS</em>
-            </h2>
-            <p className="text-white/50 text-sm mb-2">Welcome to Our New Space</p>
-
-            <div className="mt-8 space-y-1 text-white/50 text-sm">
-              <p className="text-white/30 text-[10px] tracking-[0.2em] uppercase mb-3">Location</p>
-              <p>4179 Palladium Way</p>
-              <p>Burlington, Ontario, L7M-0V9</p>
-              <p>CA</p>
-            </div>
-
-            <div className="mt-8 flex gap-4">
-              <Link
-                href="/careers"
-                className="inline-flex items-center gap-2 bg-white text-black text-xs tracking-wider px-6 py-3 hover:bg-white/80 transition-colors"
-              >
-                Join Us
-                <ArrowRight size={14} />
-              </Link>
-              <a
-                href="https://maps.app.goo.gl/TE3etbApTawrJgPu7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-white/20 text-white/60 text-xs tracking-wider px-6 py-3 hover:border-white/50 hover:text-white transition-colors"
-              >
-                Directions
-                <ArrowRight size={14} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
+      {/* Footer with custom CTA content */}
+      <Footer 
+        ctaHeadline={["The space you work in", "shapes the work you produce."]} 
+        ctaImage="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2400"
+      />
     </main>
   )
 }
+
