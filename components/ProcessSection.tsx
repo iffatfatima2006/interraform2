@@ -63,7 +63,7 @@ export default function ProcessSection() {
         className="relative w-full h-[80vh] flex items-center justify-center overflow-hidden mb-24"
       >
         {/* The Massive Text */}
-        <div className={`relative z-10 w-full flex justify-center ${splashAnimated ? 'hero-animated' : ''}`}>
+        <div className={`relative z-20 w-full flex justify-center ${splashAnimated ? 'hero-animated' : ''}`}>
           <h2 className="font-heading text-[12vw] md:text-[14vw] font-medium leading-none tracking-tight flex gap-[3vw]">
             <span className="reveal-clip block">
               <span className="reveal-inner block line-1">OUR</span>
@@ -76,13 +76,13 @@ export default function ProcessSection() {
 
         {/* The Staggered Central Images (Hidden initially, slide up when splashAnimated is true) */}
         {/* We use a custom local keyframe logic combined with the state trigger */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[400px] h-[500px] pointer-events-none hidden md:block">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-[400px] h-[500px] pointer-events-none hidden md:block">
           {/* Image 1: Left */}
           <div className={`absolute top-[10%] left-0 w-[160px] h-[240px] shadow-2xl transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${splashAnimated ? 'translate-y-0 opacity-100' : 'translate-y-[80%] opacity-0'}`} style={{ transitionDelay: '0.6s' }}>
             <Image src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800" alt="Process 1" fill className="object-cover" unoptimized />
           </div>
           {/* Image 2: Middle (Taller, overlaps others) */}
-          <div className={`absolute top-[5%] left-[25%] w-[200px] h-[320px] shadow-2xl z-30 transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${splashAnimated ? 'translate-y-0 opacity-100' : 'translate-y-[80%] opacity-0'}`} style={{ transitionDelay: '0.8s' }}>
+          <div className={`absolute top-[5%] left-[25%] w-[200px] h-[320px] shadow-2xl z-10 transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${splashAnimated ? 'translate-y-0 opacity-100' : 'translate-y-[80%] opacity-0'}`} style={{ transitionDelay: '0.8s' }}>
             <Image src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="Process 2" fill className="object-cover" unoptimized />
           </div>
           {/* Image 3: Right */}
